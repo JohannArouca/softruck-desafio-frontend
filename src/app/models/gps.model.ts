@@ -38,7 +38,7 @@ interface StopPoints {
     coordinates: any[];
 }
   
-interface GpsPoint {
+export interface GpsPoint {
     longitude: number;
     latitude: number;
     acquisition_time_unix: number;
