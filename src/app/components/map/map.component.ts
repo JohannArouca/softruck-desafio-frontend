@@ -85,8 +85,8 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
   private step(gpsPoints: GpsPoint[]): void {
     const now = performance.now();
     const pastTime = now - this.startTimeAnimationPoint;
-    const animationPointsDuration = 2000;
-    const progress = pastTime / animationPointsDuration;
+    const animationTimeUnix = this.animationToPoint.acquisition_time_unix - this.animationFromPoint.acquisition_time_unix;
+    const progress = pastTime / (animationTimeUnix * 100);
 
     const latitude = this.animationFromPoint.latitude + progress * (this.animationToPoint.latitude - this.animationFromPoint.latitude);
     const longitude = this.animationFromPoint.longitude + progress * (this.animationToPoint.longitude - this.animationFromPoint.longitude);
