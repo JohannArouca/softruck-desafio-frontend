@@ -1,0 +1,20 @@
+<mat-card id="vehicle-infos" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Informações do veículo</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div id="vehicle-infos-content" class="fxd-row mt-4">
+        <img mat-card-image [src]="vehicleInfos.picture.address" alt="Foto do veículo" />
+        
+        <div class="fxd-column">
+          <span><strong>Placa:</strong> {{ vehicleInfos.plate }}</span>
+          <span><strong>Chassi:</strong> {{ vehicleInfos.vin }}</span>
+          <div class="fxd-row color">
+            <span><strong>Cor:</strong></span>
+            <div id="vehicle-color" [style.background-color]="vehicleInfos.color"></div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+</mat-card>

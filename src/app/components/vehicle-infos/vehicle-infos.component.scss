@@ -1,0 +1,37 @@
+#vehicle-infos {
+    .fxd-column {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .fxd-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #vehicle-infos-content {
+        display: flex;
+        align-items: center;
+
+        img {
+            height: 100px;
+            width: auto;
+            border-radius: 20px;
+            border: 2px solid #555;
+            margin-right: 10px;
+        }
+    
+        div.color {
+            display: flex;
+            align-items: center;
+        }
+    
+        #vehicle-color {
+            margin-left: 5px;
+            height: 15px;
+            width: 15px;
+            border-radius: 8px;
+            border: 1px solid #555;
+        }
+    }
+}

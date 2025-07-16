@@ -24,6 +24,8 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
   private animationFromPoint!: GpsPoint;
   private animationToPoint!: GpsPoint;
 
+  public showVehicleInfos = false;
+
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {

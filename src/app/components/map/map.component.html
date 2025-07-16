@@ -1,1 +1,9 @@
-<div id="map" style="height: 500px;"></div>
+<div id="map-container">
+    <div id="map" style="height: 500px;"></div>
+    
+    <button id="btn-vehicle-info" mat-mini-fab (click)="showVehicleInfos = !showVehicleInfos">
+        <mat-icon>{{showVehicleInfos ? 'close' : 'directions_car' }}</mat-icon>
+    </button>
+
+    <app-vehicle-infos *ngIf="showVehicleInfos"></app-vehicle-infos>
+</div>

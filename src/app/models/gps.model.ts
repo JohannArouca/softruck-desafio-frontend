@@ -48,7 +48,7 @@ export interface GpsPoint {
     address?: string;
 }
   
-interface Vehicle {
+export interface Vehicle {
     plate: string;
     vin: string;
     color: string;
