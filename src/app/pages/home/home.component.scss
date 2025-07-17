@@ -1,0 +1,17 @@
+.controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .languages-container span {
+        cursor: pointer;
+        margin-right: 10px;
+
+        &.selected {
+            transform: scale(1.3);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+        }
+    }
+}

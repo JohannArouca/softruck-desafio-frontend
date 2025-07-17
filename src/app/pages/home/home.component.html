@@ -1,12 +1,23 @@
 <div class="p-4">
-    <mat-form-field appearance="fill">
-        <mat-label>Selecione o trajeto</mat-label>
-        <mat-select [formControl]="selectedCourse">
-            <mat-option *ngFor="let course of courses" [value]="course">
-                Trajeto {{ course }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div class="controls">
+        <mat-form-field appearance="fill">
+            <mat-label>{{ 'SELECT_COURSE' | translate }}</mat-label>
+            <mat-select [formControl]="selectedCourse">
+                <mat-option *ngFor="let course of courses" [value]="course">
+                    {{ 'COURSE' | translate }} {{ course }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <div class="languages-container">
+            <span 
+                *ngFor="let language of languages"
+                class="fi fi-{{language.flag}}"
+                [class.selected]="language.code === selectedLanguage"
+                (click)="changeLanguage(language.code)">
+            </span>
+        </div>
+    </div>
 
     <app-map [selectedCourseIndex]="selectedCourse.value || 0"></app-map>
 </div>

@@ -1,0 +1,12 @@
+{
+    "SELECT_COURSE": "Selecciona el camiño",
+    "COURSE": "Camiño",
+    "VEHICLE_INFO": {
+        "TITLE": "Información del auto",
+        "PLATE": "Matrícula",
+        "VIN": "Chassis",
+        "COLOR": "Color",
+        "IMAGE_ALT": "Imagen del auto"
+    }
+}
+  

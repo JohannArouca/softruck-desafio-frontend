@@ -1,0 +1,12 @@
+{
+    "SELECT_COURSE": "Selecione o trajeto",
+    "COURSE": "Trajeto",
+    "VEHICLE_INFO": {
+        "TITLE": "Informações do veículo",
+        "PLATE": "Placa",
+        "VIN": "Chassi",
+        "COLOR": "Cor",
+        "IMAGE_ALT": "Imagem do veículo"
+    }
+}
+  

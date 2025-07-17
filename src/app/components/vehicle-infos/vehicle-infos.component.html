@@ -1,17 +1,17 @@
 <mat-card id="vehicle-infos" appearance="outlined">
     <mat-card-header>
-      <mat-card-title>Informações do veículo</mat-card-title>
+      <mat-card-title>{{ 'VEHICLE_INFO.TITLE' | translate }}</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
       <div id="vehicle-infos-content" class="fxd-row mt-4">
-        <img mat-card-image [src]="vehicleInfos.picture.address" alt="Foto do veículo" />
+        <img mat-card-image [src]="vehicleInfos?.picture?.address" [alt]="'VEHICLE_INFO.IMAGE_ALT' | translate" />
         
         <div class="fxd-column">
-          <span><strong>Placa:</strong> {{ vehicleInfos.plate }}</span>
-          <span><strong>Chassi:</strong> {{ vehicleInfos.vin }}</span>
+          <span><strong>{{ 'VEHICLE_INFO.PLATE' | translate }}:</strong> {{ vehicleInfos.plate }}</span>
+          <span><strong>{{ 'VEHICLE_INFO.VIN' | translate }}:</strong> {{ vehicleInfos.vin }}</span>
           <div class="fxd-row color">
-            <span><strong>Cor:</strong></span>
+            <span><strong>{{ 'VEHICLE_INFO.COLOR' | translate }}:</strong></span>
             <div id="vehicle-color" [style.background-color]="vehicleInfos.color"></div>
           </div>
         </div>

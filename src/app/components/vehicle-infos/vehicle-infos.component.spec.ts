@@ -2,7 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { VehicleInfosComponent } from './vehicle-infos.component';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from 'src/app/models/gps.model';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'translate' })
+class MockTranslatePipe implements PipeTransform {
+  transform(value: string): string {
+    return value; // Retorna a chave como está
+  }
+}
 
 describe('VehicleInfosComponent', () => {
   let component: VehicleInfosComponent;
@@ -29,7 +36,7 @@ describe('VehicleInfosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VehicleInfosComponent],
+      declarations: [VehicleInfosComponent, MockTranslatePipe],
       providers: [
         { provide: ActivatedRoute, useValue: activatedRouteStub }
       ],
@@ -56,9 +63,9 @@ describe('VehicleInfosComponent', () => {
 
     const image: HTMLImageElement = fixture.nativeElement.querySelector('img');
     expect(image.src).toBe(mockVehicle.picture.address);
-    expect(image.alt).toBe('Foto do veículo');
-    expect(compiled.textContent).toContain('Placa: BPZ4295');
-    expect(compiled.textContent).toContain('Chassi: 34405892075660');
+    expect(image.alt).toBe('VEHICLE_INFO.IMAGE_ALT');
+    expect(compiled.textContent).toContain('VEHICLE_INFO.PLATE: BPZ4295');
+    expect(compiled.textContent).toContain('VEHICLE_INFO.VIN: 34405892075660');
   });
 
   it('should set the color', () => {

@@ -1,0 +1,12 @@
+{
+    "SELECT_COURSE": "Select the course",
+    "COURSE": "Course",
+    "VEHICLE_INFO": {
+        "TITLE": "Vehicle Information",
+        "PLATE": "Plate",
+        "VIN": "VIN",
+        "COLOR": "Color",
+        "IMAGE_ALT": "Vehicle image"
+    }
+}
+  
