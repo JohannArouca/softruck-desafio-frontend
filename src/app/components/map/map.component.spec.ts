@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as L from 'leaflet';
 import { GpsData } from 'src/app/models/gps.model';
 
-fdescribe('MapComponent', () => {
+describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
 

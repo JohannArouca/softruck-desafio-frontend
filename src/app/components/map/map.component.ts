@@ -12,6 +12,7 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
   @Input() selectedCourseIndex!: number;
 
   private course!: Course;
+  private stopPoints!: number[][];
 
   private map!: L.Map;
   private currentPolyline: L.Polyline | null = null;
@@ -60,6 +61,7 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
     if (this.requestAnimationFrameId) cancelAnimationFrame(this.requestAnimationFrameId);
   
     this.course = this.gpsData.courses[this.selectedCourseIndex - 1];
+    this.stopPoints = this.course.stop_points.coordinates.map((p) => [p[1], p[0]]);
     const latlngs = this.course.gps.map((p: GpsPoint) => [p.latitude, p.longitude]);
     this.currentPolyline = L.polyline(latlngs as L.LatLngExpression[], { color: 'blue' }).addTo(this.map);
     this.map.fitBounds(this.currentPolyline.getBounds());
@@ -74,12 +76,11 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
     this.carMarker = L.marker(latlngs[0] as L.LatLngTuple, { icon: carIcon }).addTo(this.map);
   
     this.animationCurrentPointIndex = 0;
-    this.moveCarToNextPoint();
+    this.checkStop(this.course.gps[0]);
   }
 
   private moveCarToNextPoint() {
     const gpsPoints = this.course.gps;
-    const stopPoints = this.course.gps.map((p: GpsPoint) => [p.latitude, p.longitude]);
     
     if (this.animationCurrentPointIndex >= gpsPoints.length - 1) return;
 
@@ -109,7 +110,7 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.animationCurrentPointIndex++;
       this.startTimeAnimationPoint = 0;
-      this.moveCarToNextPoint();
+      this.checkStop(this.animationToPoint);
     }
   }
 
@@ -143,6 +144,18 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
       const offsetX = -(carFrameIndex * carFrameWidth);
 
       innerDiv.style.backgroundPosition = `${offsetX}px 0`;
+    }
+  }
+
+  private checkStop(point: GpsPoint): void {
+    const isStopPoint = this.stopPoints.some(([lat, lng]) => lat === point.latitude && lng === point.longitude);
+    const stopTime = (this.course.total_stop_time / this.course.stops) * 1000;
+    if (isStopPoint) {
+      setTimeout(() => {
+        this.moveCarToNextPoint()
+      }, stopTime);
+    } else {
+      this.moveCarToNextPoint();
     }
   }
 }
