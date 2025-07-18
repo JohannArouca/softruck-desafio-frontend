@@ -13,7 +13,7 @@ export interface GpsData {
     vehicle: Vehicle;
 }
 
-interface Course {
+export interface Course {
     start_at: string;
     end_at: string;
     distance: number;
@@ -27,7 +27,7 @@ interface Course {
     gps: GpsPoint[];
 }
 
-interface StopPoints {
+export interface StopPoints {
     type: string;
     crs: {
         type: string;

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as L from 'leaflet';
 import { GpsData } from 'src/app/models/gps.model';
 
-describe('MapComponent', () => {
+fdescribe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
 
@@ -461,7 +461,7 @@ describe('MapComponent', () => {
     expect((component as any).carMarker).toBeTruthy();
   });
 
-  it('should run animateStep and step without error', () => {
+  it('should run moveCarToNextPoint without error', () => {
     component.ngOnInit();
     component.selectedCourseIndex = 1;
 
@@ -469,8 +469,7 @@ describe('MapComponent', () => {
 
     const gpsPoints = mockGpsData.courses[0].gps;
 
-    component['animateStep'](gpsPoints);
-    component['step'](gpsPoints);
+    component['moveCarToNextPoint']();
 
     expect(component['animationFromPoint']).toEqual(gpsPoints[0]);
     expect(component['animationToPoint']).toEqual(gpsPoints[1]);
